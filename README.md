@@ -1,60 +1,158 @@
-# JetExpress — JeteXpress_123 (Aktor Admin, Petugas Konter & Petugas Kurir)
+<img width="1920" height="1080" alt="Slide Deck Kelompok 26 Jet" src="https://github.com/user-attachments/assets/078e9425-f3e0-4ca7-8d01-cb51bfcc25d7" />
 
-Proyek kuliah pengiriman paket **JetExpress Samarinda** — Java Swing
-(NetBeans GUI Builder) + Maven + MySQL, arsitektur **MVC + pola DAO**.
+# JetExpress 
+## 📦 Sistem Informasi Manajemen Pengiriman & Pelacakan Paket Dengan Aplikasi JetExpress
 
-## Isi Proyek
+## SDGs : 8. Decent Work and Economic Growth & 9. Industry, Innovation and Infrastructure
+
+<img width="1285" height="1176" alt="image" src="https://github.com/user-attachments/assets/6a49bfbb-8ed8-41f9-9292-13edf08615b5" />
+
+---
+
+
+### Kontributor
+* Alya Hauranisa Nugroho (25019116005)
+* Annisa Nayzhua Febriyani (25019116013)
+* Ananta Hanif Fidzya Pratama (25019116023)
+* Muhammad Risky Alpianur (25019116101)
+
+## Deskripsi Singkat
+
+JetExpress adalah Sistem Informasi Manajemen Pengiriman dan Pelacakan Paket berbasis desktop. Aplikasi ini dirancang untuk memfasilitasi proses bisnis ekspedisi, mulai dari pencatatan paket, pengelolaan tarif ongkos kirim, penugasan kurir, hingga pelacakan riwayat rute secara *real-time*. Dikembangkan menggunakan Java Swing dengan pola arsitektur MVC (Model-View-Controller) dan metode DAO (Data Access Object) Pattern untuk memastikan struktur kode yang *scalable* dan terorganisasi dengan baik, serta mengimplementasikan desain tata letak UI menggunakan FlatLaf.
+
+## Fitur Utama Program
+
+1. **Multi-Role Authentication**: Akses login berbeda untuk Admin, Petugas Konter, dan Kurir.
+
+<img width="1355" height="758" alt="image" src="https://github.com/user-attachments/assets/218eaf1d-9665-4b15-9dcc-94ff755e3621" />
+
+2. **Dashboard & Laporan Operasional**: Rekapitulasi jumlah pengiriman dan pengelolaan data sistem (khusus Admin).
+
+<img width="1351" height="759" alt="image" src="https://github.com/user-attachments/assets/17f8507d-8a56-4d6c-93cc-d07279d03253" />
+
+3. **Manajemen Master Data (CRUD)**: Pengelolaan penuh data Konter, User, Tarif Ongkir, dan Kendaraan Kurir.
+
+<img width="1355" height="758" alt="image" src="https://github.com/user-attachments/assets/3ff8c8a4-8168-4c4d-949e-829c9123e810" />
+
+4. **Transaksi Pengiriman & Paket**: Pembuatan resi pengiriman, pencatatan data pengirim/penerima, kalkulasi biaya, dan manajemen metode pembayaran (Cash, Cashless, COD).
+
+<img width="1358" height="759" alt="image" src="https://github.com/user-attachments/assets/8e2bdb47-afa3-4d53-97ba-a80112e07182" />
+
+5. **Pelacakan (Tracking)**: Pembaruan dan monitoring *Riwayat Pelacakan* berdasarkan nomor resi yang dapat diakses publik.
+
+<img width="1356" height="763" alt="image" src="https://github.com/user-attachments/assets/2f70e1db-dac5-4768-bc19-ead963598514" />
+
+6. **Manajemen Pengantaran**: Pembaruan status penugasan oleh kurir di lapangan beserta unggah bukti foto pengiriman.
+
+<img width="1354" height="761" alt="image" src="https://github.com/user-attachments/assets/99f142cb-cbe6-4123-968d-3302f1441c89" />
+
+7. **Peta Interaktif**: Integrasi rute dan visualisasi titik koordinat latitude/longitude menggunakan library JXMapViewer2.
+
+<img width="694" height="553" alt="image" src="https://github.com/user-attachments/assets/b134adf4-0d71-4af4-a7f3-2437161ae417" />
+
+
+## Tech Stack
+
+* **Bahasa Pemrograman**: Java (JDK 17)
+
+
+* **Database**: MySQL (Driver: `mysql-connector-j` 9.3.0)
+
+
+* **Arsitektur**: MVC (Model-View-Controller) & DAO (Data Access Object)
+* **Framework/Library**:
+* Java Swing (GUI)
+* FlatLaf (Tema UI)
+* JXMapViewer2 v2.8 (Implementasi Peta/Koordinat)
+
+
+* JUnit 5 v5.10.3 (Unit Testing)
+
+
+
+
+* **Build Tool & IDE**: Maven, Apache NetBeans
+
+
+
+## Perancangan Sistem
+
+*Silakan sesuaikan direktori path gambar Flowchart dan Use Case jika Anda menaruhnya di dalam folder khusus (misal: `assets/`)*.
+
+* **Use Case Diagram**: 
+* **Flowchart**: 
+* **ERD Logical**: ![ERD Logical](ERD Logical_PA_Jet.jpg)
+* **ERD Relational**: ![ERD Relational](ERD Relational_PA_Jet.jpg)
+
+## Struktur Folder/Package
+
+```text
+JeteXpress_123
+├── pom.xml
+├── db_jetexpress_4.sql
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── com
+│   │   │       └── mycompany
+│   │   │           └── jetexpress
+│   │   │               ├── main (Main class entry point)
+│   │   │               ├── config (Manajemen Singleton untuk Database Connection Pooling)
+│   │   │               ├── model (POJO/Entitas database: User, Admin, Kurir, Paket, dll.)
+│   │   │               ├── dao (Interface DAO untuk standarisasi query)
+│   │   │               ├── daoimpl (Implementasi kongkret operasi CRUD JDBC)
+│   │   │               ├── controller (Logika bisnis MVC & validasi event)
+│   │   │               └── view (Desain antarmuka/GUI berbasis Java Swing)
+│   │   └── resources (Aset gambar, ikon, dan resi)
+│   └── test (File JUnit testing)
 
 ```
-JeteXpress_123/
-├── pom.xml                  ← Java 17, MySQL Connector/J 9.3, JXMapViewer 2.8
-└── src/main/java/
-    ├── main/Main.java       ← titik masuk aplikasi
-    ├── config/              ← KoneksiDatabase (JDBC, singleton)
-    ├── model/               ← 10 POJO + interface BarisTabel
-    ├── dao/                 ← BaseDAO (abstract) + 10 DAO (PreparedStatement)
-    ├── controller/          ← 9 controller (logika bisnis + validasi)
-    ├── util/                ← InputHelper, FilterNomorHp (awalan 08),
-    │                          HakAkses (abstract) + 3 subclass role,
-    │                          NavigasiHalaman (interface), Sesi,
-    │                          TemaJetExpress, DatePickerKalender,
-    │                          ValidasiKoordinat, KonversiWaktu, TeksPetunjuk
-    ├── image/               ← ImageManager: foto bukti pengantaran kurir
-    └── view/                ← 30 JPanel + MainFrame + PanelPeta (JXMapViewer)
-```
 
-## Cara Menjalankan (NetBeans)
+## Penjelasan Penerapan 4 Pilar OOP
 
-1. **Import database**: buat database `jetexpress` lalu import
-   `db_jetexpress.sql`.
-2. **Cek kredensial** MySQL pada `config/KoneksiDatabase.java`
-   (bawaan: `root` / password kosong, port 3306).
-3. Buka folder proyek di NetBeans (**File → Open Project**), tunggu Maven
-   mengunduh dependensi, lalu **Run** `main.Main`.
-4. **Peta OpenStreetMap butuh koneksi internet** (tile dari
-   tile.openstreetmap.org). Foto bukti tersimpan di folder `bukti/`
-   di samping folder proyek (dibuat otomatis).
+1. **Encapsulation (Enkapsulasi)**:
+Seluruh atribut pada class `Model` (seperti `id_user`, `nama`, `no_resi`, `total_biaya`) dideklarasikan dengan *access modifier* `private`. Akses dan modifikasi data dijembatani secara aman dari luar *class* menggunakan metode *getter* dan *setter*.
+2. **Inheritance (Pewarisan)**:
+Menerapkan hierarki *Supertype-Subtype* pada rancangan basis data ke dalam kelas Java. Terdapat parent class `User` yang menampung atribut umum, lalu diwariskan (`extends`) ke child class seperti `Admin`, `PetugasKonter`, dan `Kurir` yang memiliki atribut lebih spesifik (contoh: `shift_kerja` pada class Petugas Konter, `nomor_kendaraan` pada class Kurir).
 
-## Akun Uji (role diambil otomatis dari database)
 
-| Role | Email | Password | Beranda setelah login |
-|---|---|---|---|
-| Admin | `siti.mahendra@jetexpress.co.id` | `adminkeren47` | MenuAdmin |
-| Petugas Konter | `nia.rahman@jetexpress.co.id` | `petugasterbaik83` | MenuKelolaPengiriman |
-| Kurir | `linda.noor@jetexpress.co.id` | `kurirjago38` | LihatPengantaran |
+3. **Polymorphism (Polimorfisme)**:
+Diterapkan melalui penggunaan antarmuka (interface) pada lapisan DAO dan *Method Overriding*. Sebuah antarmuka seperti `UserDAO` mendefinisikan kontrak operasi (contoh: `insert()`, `update()`), yang kemudian diimplementasikan dan di- *override* secara spesifik oleh `UserDAOImpl`, menyesuaikan query SQL yang dibutuhkan.
+4. **Abstraction (Abstraksi)**:
+Proses akses dan komunikasi ke basis data MySQL disembunyikan menggunakan *Interface* (lapisan DAO). Lapisan Controller (maupun View) hanya memanggil metode dari interface DAO dan tidak perlu mengetahui detail kompleksitas query, koneksi `ResultSet`, atau penanganan `SQLException` yang terjadi di balik layar.
 
-## Fitur Utama
+## Cara Penggunaan Program
 
-| Fitur | Keterangan |
-|---|---|
-| **Login berbasis role** | Role dibaca dari tabel `user` (bukan ComboBox). Admin → MenuAdmin, Petugas Konter → MenuKelolaPengiriman, Kurir → LihatPengantaran. Hak akses tiap pindah halaman diperiksa objek `HakAkses` (abstract class + 3 subclass); halaman di luar wewenang ditolak dengan pesan dan dialihkan ke beranda role. |
-| **Nomor HP otomatis 08** | Kolom No. HP pengirim & penerima pada 4 form pengiriman memakai `FilterNomorHp`: terisi `08` saat form dibuka, hanya menerima angka, awalan 08 tidak bisa dihapus, maksimal 13 digit; validasi lengkap dijalankan lagi sebelum simpan. |
-| **Form Ubah menampilkan data lama** | Semua form ubah (pengiriman admin & konter, pengantaran admin, status pengantaran kurir, kurir & petugas konter) mengambil ulang data terbaru dari database berdasarkan ID/resi yang dipilih — termasuk pilihan ComboBox, tanggal, dan foto bukti. |
-| **Reset form** | Form Tambah selalu kosong (HP kembali `08`) saat dibuka; tombol Batal mengosongkan isian setelah konfirmasi; refresh-on-show di MainFrame memuat ulang data setiap halaman ditampilkan. |
-| **Scroll bar semua halaman** | Setiap halaman dibungkus `JScrollPane` di MainFrame — scrollbar muncul hanya bila diperlukan; desain panel tidak diubah. |
-| **Foto bukti pengantaran** | Package `image` (`ImageManager`): JFileChooser JPG/JPEG/PNG, maks 2 MB, validasi isi berkas, disalin ke `bukti/` dengan nama unik, pratinjau lewat dialog, path relatif disimpan ke kolom `pengantaran.bukti_foto`. Di form Ubah Status: klik dua kali kolom bukti foto = pilih foto baru / lihat pratinjau foto tersimpan. |
-| **InputHelper** | Validasi kosong, angka, desimal, HP (08), email, resi (JE+8), koordinat, berat 0–50 kg, tanggal/waktu, password min 6, konter/ongkir dipilih; semua dijalankan sebelum CRUD. |
-| **MVC + DAO + OOP** | View → Controller → DAO → MySQL. Semua SQL `PreparedStatement`. OOP: encapsulation (model), inheritance & abstraction (`BaseDAO<T>` abstract, `HakAkses` abstract), interface (`NavigasiHalaman`, `BarisTabel`) yang benar-benar dipakai, polymorphism & overloading (`isiDataUser(Object[])`/`isiDataUser(int)`, `ambilAngka`), association antar model (Pengiriman↔Paket↔Konter↔Ongkir↔Pengantaran↔RiwayatPelacakan). |
-| **Tombol semuanya berfungsi** | Tambah/Simpan/Ubah/Hapus (dengan konfirmasi)/Cari/Refresh (ambil ulang dari DB, tanpa duplikasi)/Batal/Kembali/Login/Logout + seluruh navigasi sidebar admin, konter, dan kurir. Tidak ada handler kosong. |
-| **Peta JXMapViewer** | Tambah/Ubah Data Pengantaran: klik peta mengisi koordinat; koordinat lama tampil kembali saat form ubah dibuka. |
-| **Kalender** | Semua field tanggal memakai DatePickerKalender berbahasa Indonesia sesuai tipe kolom (DATE/DATETIME). |
+1. **Persiapan Database**:
+* Buka XAMPP/Laragon dan jalankan layanan MySQL.
+* Buat database baru dengan nama `jetexpress`.
+* Lakukan proses *import* menggunakan file `db_jetexpress_4.sql` yang telah disediakan.
+
+
+2. **Menjalankan Program**:
+* Buka *source code* (folder `JeteXpress_123`) di Apache NetBeans.
+
+
+* Tunggu hingga proses *Resolve Dependencies* Maven selesai untuk mengunduh driver MySQL dan JXMapViewer2.
+
+
+* Jalankan program melalui file utama (`main.Main`).
+
+
+
+
+3. **Autentikasi**:
+* Gunakan email dan password yang terdaftar di dalam tabel `user` untuk login.
+
+
+* Pastikan Anda memilih Role (*Admin / Petugas Konter / Kurir*) yang tepat sesuai dengan data akun Anda.
+
+
+
+
+
+### Tampilan Antarmuka (GUI)
+
+![Tampilan 1](Screenshot 2026-11-06 234352.png)
+![Tampilan 2](Screenshot 2026-11-06 234338.png)
+![Tampilan 3](Screenshot 2026-11-06 234320.png)
