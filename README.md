@@ -479,20 +479,8 @@ Seluruh halaman `view` mewarisi `JPanel`, `MainFrame` mewarisi `JFrame`, dan `Fi
 agar input nomor HP hanya menerima angka.
  
 #### 📁 d. Struktur hierarki pewarisan
-```mermaid
-classDiagram
-    BaseDAO <|-- UserDAO
-    BaseDAO <|-- KonterDAO
-    BaseDAO <|-- OngkirDAO
-    BaseDAO <|-- PaketDAO
-    BaseDAO <|-- PengirimanDAO
-    BaseDAO <|-- PengantaranDAO
-    BaseDAO <|-- RiwayatPelacakanDAO
-    HakAkses <|-- HakAksesAdmin
-    HakAkses <|-- HakAksesKonter
-    HakAkses <|-- HakAksesKurir
-    HakAkses <|-- HakAksesTanpaIzin
-```
+
+<img width="1870" height="297" alt="image" src="https://github.com/user-attachments/assets/d78227c2-5796-4ad5-b55e-97a0aafc0821" />
  
 > **Catatan:** hubungan supertype–subtype `User` → `Admin`, `Petugas Konter`, `Kurir` pada ERD diwujudkan dengan
 > **komposisi**. Contohnya `Kurir` memuat atribut `nomorKendaraan` dan menyimpan objek `User` (`private User user`).
