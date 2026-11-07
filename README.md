@@ -130,10 +130,43 @@ dengan nomor resi **tanpa login**.
  
 ---
 
-## Perancangan Sistem
-
-*Silakan sesuaikan direktori path gambar Flowchart dan Use Case jika Anda menaruhnya di dalam folder khusus (misal: `assets/`)*.
-
+## 4. Perancangan Sistem
+ 
+### Tabel Hak Akses
+ 
+| Fitur | Pengguna Umum | Admin | Petugas Konter | Kurir |
+|---|:---:|:---:|:---:|:---:|
+| Login | – | ✅ | ✅ | ✅ |
+| Lacak Paket (no. resi) | ✅ | ✅ | ✅ | ✅ |
+| Cek Tarif | ✅ | ✅ | ✅ | ✅ |
+| Lihat Konter | ✅ | ✅ | ✅ | ✅ |
+| Dashboard / Laporan | ❌ | ✅ | ❌ | ❌ |
+| Kelola User | ❌ | ✅ (CRUD) | ❌ | ❌ |
+| Kelola Konter | ❌ | ✅ (CRUD) | 👁️ Lihat | ❌ |
+| Kelola Ongkir | ❌ | ✅ (CRUD) | 👁️ Lihat | ❌ |
+| Kelola Pengiriman | ❌ | ✅ (CRUD) | ✅ (CRUD) | ❌ |
+| Kelola Paket | ❌ | ✅ (CRUD) | ✅ (CRUD) | ❌ |
+| Kelola Riwayat Pelacakan | ❌ | ✅ (CRUD) | ✅ (CRUD) | ❌ |
+| Kelola Pengantaran | ❌ | ✅ (CRUD) | ✅ (tambah/ubah/lihat) | 👁️ Lihat |
+| Lihat tugas pengantaran | ❌ | ✅ | ✅ | ✅ |
+| Ubah status dan unggah foto bukti | ❌ | ✅ | ❌ | ✅ |
+ 
+> Keterangan: ✅ = akses penuh, 👁️ = hanya melihat, ❌ = tidak ada akses.
+  
+**Ringkasan relasi**
+ 
+| Relasi | Kardinalitas |
+|---|:---:|
+| Konter — User | 1 : N |
+| Konter — Pengiriman | 1 : N |
+| Ongkir — Pengiriman | 1 : N |
+| Pengiriman — Paket | 1 : 1 |
+| Pengiriman — Riwayat Pelacakan | 1 : N |
+| Pengiriman — Pengantaran | 1 : N |
+| Kurir — Pengantaran | 1 : N |
+| User → Admin / Petugas Konter / Kurir | Supertype – Subtype |
+ 
+---
 
 <details>
 <summary><b>📌 Use Case Diagram</b> (klik untuk menampilkan)</summary>
@@ -188,76 +221,421 @@ dengan nomor resi **tanpa login**.
 </details>
 
 
-## Struktur Folder/Package
-
-```text
-JeteXpress_123
+## 5. Struktur Folder / Package
+ 
+```
+JetExpress/
 ├── pom.xml
-├── db_jetexpress_4.sql
-├── src
-│   ├── main
-│   │   ├── java
-│   │   │   └── com
-│   │   │       └── mycompany
-│   │   │           └── jetexpress
-│   │   │               ├── main (Main class entry point)
-│   │   │               ├── config (Manajemen Singleton untuk Database Connection Pooling)
-│   │   │               ├── model (POJO/Entitas database: User, Admin, Kurir, Paket, dll.)
-│   │   │               ├── dao (Interface DAO untuk standarisasi query)
-│   │   │               ├── daoimpl (Implementasi kongkret operasi CRUD JDBC)
-│   │   │               ├── controller (Logika bisnis MVC & validasi event)
-│   │   │               └── view (Desain antarmuka/GUI berbasis Java Swing)
-│   │   └── resources (Aset gambar, ikon, dan resi)
-│   └── test (File JUnit testing)
-
+├── jetexpress.sql
+├── README.md
+├── docs/                         # diagram dan screenshot untuk dokumentasi
+│   ├── erd/
+│   ├── usecase/
+│   ├── flowchart/
+│   └── screenshots/
+└── src/main/
+    ├── java/
+    │   ├── config/
+    │   │   └── KoneksiDatabase.java
+    │   ├── controller/
+    │   │   ├── DashboardController.java
+    │   │   ├── KonterController.java
+    │   │   ├── LacakPaketController.java
+    │   │   ├── LoginController.java
+    │   │   ├── OngkirController.java
+    │   │   ├── PengantaranController.java
+    │   │   ├── PengirimanController.java
+    │   │   ├── RiwayatPelacakanController.java
+    │   │   └── UserController.java
+    │   ├── dao/
+    │   │   ├── BaseDAO.java
+    │   │   ├── DashboardAdminDAO.java
+    │   │   ├── KonterDAO.java
+    │   │   ├── LacakPaketDAO.java
+    │   │   ├── OngkirDAO.java
+    │   │   ├── PaketDAO.java
+    │   │   ├── PengantaranDAO.java
+    │   │   ├── PengirimanDAO.java
+    │   │   ├── RiwayatPelacakanDAO.java
+    │   │   └── UserDAO.java
+    │   ├── image/
+    │   │   └── ImageManager.java      # simpan/hapus foto bukti pengantaran
+    │   ├── main/
+    │   │   └── Main.java
+    │   ├── model/
+    │   │   ├── Admin.java
+    │   │   ├── BarisTabel.java        # interface
+    │   │   ├── Konter.java
+    │   │   ├── Kurir.java
+    │   │   ├── Ongkir.java
+    │   │   ├── Paket.java
+    │   │   ├── Pengantaran.java
+    │   │   ├── Pengiriman.java
+    │   │   ├── PetugasKonter.java
+    │   │   ├── RiwayatPelacakan.java
+    │   │   └── User.java
+    │   ├── util/
+    │   │   ├── DatePickerKalender.java
+    │   │   ├── FilterNomorHp.java
+    │   │   ├── HakAkses.java          # abstract class
+    │   │   ├── HakAksesAdmin.java
+    │   │   ├── HakAksesKonter.java
+    │   │   ├── HakAksesKurir.java
+    │   │   ├── HakAksesTanpaIzin.java
+    │   │   ├── InputHelper.java
+    │   │   ├── KonversiWaktu.java
+    │   │   ├── NavigasiHalaman.java   # interface
+    │   │   ├── Sesi.java              # singleton
+    │   │   ├── TeksPetunjuk.java
+    │   │   ├── TemaJetExpress.java
+    │   │   └── ValidasiKoordinat.java
+    │   └── view/
+    │       ├── MainFrame.java         # frame utama (CardLayout) + navigasi halaman
+    │       ├── Login.java
+    │       ├── MenuUtama.java
+    │       ├── MenuAdmin.java
+    │       ├── CekTarif.java
+    │       ├── MenuCekTarif.java
+    │       ├── LacakPaket.java
+    │       ├── KonterKami.java
+    │       ├── LihatDaftarKonter.java
+    │       ├── LihatPengantaran.java
+    │       ├── PanelPeta.java
+    │       ├── KelolaKonter.java
+    │       ├── KelolaOngkir.java
+    │       ├── KelolaPengantaran.java
+    │       ├── KelolaPengiriman.java
+    │       ├── KelolaRiwayatPelacakan.java
+    │       ├── KelolaUser.java
+    │       ├── MenuKelolaKonter.java
+    │       ├── MenuKelolaPenantaran.java
+    │       ├── MenuKelolaPengiriman.java
+    │       ├── MenuKelolaRiwayatPelacakan.java
+    │       ├── MenuTambahDataPengiriman.java
+    │       ├── MenuUbahDataPengiriman.java
+    │       ├── TambahDataKurir.java
+    │       ├── TambahDataPengantaran.java
+    │       ├── TambahDataPengiriman.java
+    │       ├── TambahDataPetugasKonter.java
+    │       ├── UbahDataKurir.java
+    │       ├── UbahDataPengantaran.java
+    │       ├── UbahDataPengiriman.java
+    │       ├── UbahDataPetugasKonter.java
+    │       └── UbahStatusPengantaran.java
+    └── resources/                     # ikon dan maskot (IconCekTarif, JetyBahagia, dst.)
 ```
 
-## Penjelasan Penerapan 4 Pilar OOP
+> File `.form` pada package `view` adalah file desain NetBeans GUI Builder untuk tiap halaman, dan tidak ditampilkan di atas.
+ 
+**Peran tiap package (MVC + DAO)**
+ 
+| Package | Peran |
+|---|---|
+| `model` | Entitas yang merepresentasikan tabel database (data dan getter/setter). |
+| `view` | Tampilan Java Swing; setiap halaman berupa `JPanel`, dihimpun oleh `MainFrame`. |
+| `controller` | Penghubung antara `view` dan `dao`: validasi, aturan bisnis, dan penanganan error. |
+| `dao` | Seluruh akses database (query JDBC) dengan DAO Pattern. |
+| `config` | Konfigurasi dan pembuatan koneksi database (Singleton). |
+| `util` | Helper: validasi input, hak akses per role, sesi login, tema, date picker. |
+| `image` | Pengelolaan file foto bukti pengantaran. |
+| `main` | Titik masuk aplikasi (`Main.java`). |
+ 
+---
 
-1. **Encapsulation (Enkapsulasi)**:
-Artinya Membungkus data supaya tidak bisa diubah sembarangan dari luar. Seluruh atribut pada class `Model` (seperti `id_user`, `nama`, `no_resi`, `total_biaya`) dideklarasikan dengan *access modifier* `private`. Akses dan modifikasi data dijembatani secara aman dari luar *class* menggunakan metode *getter* dan *setter*, dengan ini data akan lebih aman, dan jika aturan berubah cukup mengubah satu tempat(geter/setter) tanpa merusak bagian lain.
-
-3. **Inheritance (Pewarisan)**:
-Artinya Class anak mewarisi sifat class induk(class lain).olehkarna itu untuk menerapkan hierarki *Supertype-Subtype* pada rancangan basis data ke dalam kelas Java. Terdapat parent class `User` yang menampung atribut umum, lalu diwariskan (`extends`) ke child class seperti `Admin`, `PetugasKonter`, dan `Kurir` yang memiliki atribut lebih spesifik (contoh: `shift_kerja` pada class Petugas Konter, `nomor_kendaraan` pada class Kurir), tidak perlu menulis ulang nama, email, dan password di tiga class cukup ditulis sekali di user.
-
-4. **Polymorphism (Polimorfisme)**:
-Artinya banyak bentuk satu perintah yang sama bisa dijalankan dengan cara berbeda tergantung siapa pelaksananya. Oleh karna itu diterapkan melalui penggunaan antarmuka (interface) pada lapisan DAO dan *Method Overriding*. Sebuah antarmuka seperti `UserDAO` mendefinisikan kontrak operasi (contoh: `insert()`, `update()`), yang kemudian diimplementasikan dan di- *override* secara spesifik oleh `UserDAOImpl`, menyesuaikan query SQL yang dibutuhkan. Semua DAO punya bentuk yang seragam jika suatu saat database diganti cukup memuat implementasi baru tanpa menggubah controller.
-
-6. **Abstraction (Abstraksi)**:
-Artinya menyembunyikan hal rumit dan hanya menampilkan yang perlu, Proses akses dan komunikasi ke basis data MySQL disembunyikan menggunakan *Interface* (lapisan DAO). Lapisan Controller (maupun View) hanya memanggil metode dari interface DAO dan tidak perlu mengetahui detail kompleksitas query, koneksi `ResultSet`, atau penanganan `SQLException` yang terjadi di balik layar.
-
-## Cara Penggunaan Program
-
-1. **Persiapan Database**:
-* Buka XAMPP/Laragon dan jalankan layanan MySQL.
-* Buat database baru dengan nama `jetexpress`.
-* Lakukan proses *import* lalu pilih file `db_jetexpress_4.sql` yang telah disediakan.
-
-
-2. **Menjalankan Program**:
-* Buka *source code* (folder `JeteXpress_123`) di Apache NetBeans.
-
-
-* Tunggu hingga proses *Resolve Dependencies* Maven selesai untuk mengunduh driver MySQL dan JXMapViewer2.
-
-
-* Jalankan program melalui file utama (`main.Main`).
-
-
-
-
-3. **Autentikasi**:
-* Gunakan email dan password yang terdaftar di dalam tabel `user` untuk login.
-
-
-* Pastikan Anda memilih Role (*Admin / Petugas Konter / Kurir*) yang tepat sesuai dengan data akun Anda.
-
-
-
-
-
-### Tampilan Antarmuka (GUI)
-
-![Tampilan 1](Screenshot 2026-11-06 234352.png)
-![Tampilan 2](Screenshot 2026-11-06 234338.png)
-![Tampilan 3](Screenshot 2026-11-06 234320.png)
+## 6. Penerapan 4 Pilar OOP
+ 
+Proyek **JeteXpress** dikembangkan dengan bahasa **Java** menggunakan paradigma **Object-Oriented Programming (OOP)**.
+Keempat pilar OOP, yaitu **Encapsulation**, **Inheritance**, **Polymorphism**, dan **Abstraction**, diterapkan
+pada package `model`, `dao`, `util`, dan `view`. Berikut penjelasan tiap pilar beserta potongan kode dari program.
+ 
+---
+ 
+### 1. Encapsulation (Enkapsulasi)
+ 
+**Konsep:** melindungi data agar tidak diakses langsung dari luar class. Atribut dibuat `private` dan hanya
+diakses lewat method (getter/setter atau method khusus).
+ 
+#### 📁 a. `Konter.java` (Package: `model`)
+```java
+public class Konter implements BarisTabel {
+ 
+    private int idKonter;
+    private String namaKonter;
+    private String alamatKonter;
+    private String kecamatan;
+    private String callCenter;
+ 
+    public String getNamaKonter() { return namaKonter; }
+    public void setNamaKonter(String namaKonter) {
+        this.namaKonter = namaKonter;
+    }
+    // ... getter dan setter atribut lainnya
+}
+```
+Seluruh atribut entitas `Konter` bersifat `private`, sehingga data hanya dapat dibaca dan diubah lewat getter dan setter.
+Pola yang sama dipakai pada class model lain seperti `User`, `Paket`, `Pengiriman`, `Pengantaran`, `Ongkir`, dan `RiwayatPelacakan`.
+ 
+#### 📁 b. `Sesi.java` (Package: `util`)
+```java
+public final class Sesi {
+ 
+    private static Sesi instance;
+ 
+    private int idUser;
+    private String nama;
+    private String role;
+    private int idKonter;
+ 
+    private boolean peran(String peranDicari) {
+        return role != null && role.trim().equalsIgnoreCase(peranDicari);
+    }
+ 
+    public boolean isAdmin() { return peran("Admin"); }
+    public boolean isPetugasKonter() { return peran("Petugas Konter"); }
+    public boolean isKurir() { return peran("Kurir"); }
+}
+```
+Data user yang sedang login disimpan privat. Class lain tidak membaca atribut `role` langsung,
+tetapi bertanya lewat method seperti `isAdmin()`, sehingga aturan pencocokan peran tetap terpusat di satu tempat.
+ 
+#### 📁 c. `PengantaranDAO.java` (Package: `dao`)
+```java
+private void validasiStatus(String status, String bukti) {
+    if (!List.of(Pengantaran.STATUS_DITUGASKAN,
+            Pengantaran.STATUS_DALAM_PERJALANAN,
+            Pengantaran.STATUS_BERHASIL,
+            Pengantaran.STATUS_GAGAL).contains(status)) {
+        throw new IllegalArgumentException("Status pengantaran tidak valid.");
+    }
+    if (Pengantaran.STATUS_GAGAL.equals(status)
+            && (bukti == null || bukti.isBlank())) {
+        throw new IllegalArgumentException(
+                "Bukti foto wajib diisi jika pengantaran gagal.");
+    }
+}
+```
+Method validasi dibuat `private` karena hanya dipakai di dalam DAO. Pihak luar tidak bisa melewati aturan,
+misalnya status harus salah satu dari empat nilai dan bukti foto wajib diisi bila pengantaran gagal.
+ 
+🔎 Dengan atribut `private`, akses lewat method, dan validasi yang tersembunyi di dalam class, data user, pengiriman,
+dan pengantaran hanya bisa diubah lewat jalur yang sudah ditentukan.
+ 
+---
+ 
+### 2. Inheritance (Pewarisan)
+ 
+**Konsep:** class turunan mewarisi atribut dan method dari class induk sehingga kode dapat dipakai ulang.
+ 
+#### 📁 a. `BaseDAO<T>` → seluruh DAO entitas
+```java
+public abstract class BaseDAO<T> {
+    protected Connection bukaKoneksi() throws SQLException { ... }
+    protected List<T> daftarHasil(String sql, Object... parameter) throws SQLException { ... }
+    protected int perintah(String sql, Object... parameter) throws SQLException { ... }
+    protected void jalankanTransaksi(BlokTransaksi blok) throws SQLException { ... }
+}
+```
+```java
+public class KonterDAO extends BaseDAO<Konter> {
+ 
+    public boolean tambahKonter(Konter konter) throws SQLException {
+        int jumlah = perintah(
+                "INSERT INTO konter (nama_konter, alamat_konter, kecamatan, "
+                + "call_center) VALUES (?, ?, ?, ?)",
+                konter.getNamaKonter(), konter.getAlamatKonter(),
+                konter.getKecamatan(), konter.getCallCenter());
+        return jumlah > 0;
+    }
+}
+```
+`KonterDAO` memakai `perintah()` milik induknya tanpa menulis ulang kode koneksi, `PreparedStatement`, dan penutupan resource.
+Pewarisan yang sama berlaku untuk `UserDAO`, `OngkirDAO`, `PaketDAO`, `PengirimanDAO`, `PengantaranDAO`, dan `RiwayatPelacakanDAO`.
+ 
+#### 📁 b. `HakAkses` → `HakAksesAdmin`, `HakAksesKonter`, `HakAksesKurir`, `HakAksesTanpaIzin`
+```java
+public class HakAksesAdmin extends HakAkses {
+ 
+    @Override
+    protected Set<String> halamanIzin() {
+        return Set.of("menuAdmin", "menuUser", "menuKonter", "menuOngkir",
+                "menuPengiriman", "menuRiwayat", "menuPengantaran" /* ... */);
+    }
+ 
+    @Override
+    public String halamanBeranda() { return "menuAdmin"; }
+ 
+    @Override
+    public String namaRole() { return "Admin"; }
+}
+```
+Setiap role mewarisi aturan umum dari `HakAkses` (misalnya halaman publik dan method `bolehBuka()`),
+lalu hanya mengisi daftar halaman yang diizinkan untuk role tersebut.
+ 
+#### 📁 c. Pewarisan komponen Swing
+```java
+public class MainFrame extends JFrame implements NavigasiHalaman { ... }
+public class Login extends javax.swing.JPanel { ... }
+public class FilterNomorHp extends DocumentFilter { ... }
+```
+Seluruh halaman `view` mewarisi `JPanel`, `MainFrame` mewarisi `JFrame`, dan `FilterNomorHp` mewarisi `DocumentFilter`
+agar input nomor HP hanya menerima angka.
+ 
+#### 📁 d. Struktur hierarki pewarisan
+```mermaid
+classDiagram
+    BaseDAO <|-- UserDAO
+    BaseDAO <|-- KonterDAO
+    BaseDAO <|-- OngkirDAO
+    BaseDAO <|-- PaketDAO
+    BaseDAO <|-- PengirimanDAO
+    BaseDAO <|-- PengantaranDAO
+    BaseDAO <|-- RiwayatPelacakanDAO
+    HakAkses <|-- HakAksesAdmin
+    HakAkses <|-- HakAksesKonter
+    HakAkses <|-- HakAksesKurir
+    HakAkses <|-- HakAksesTanpaIzin
+```
+ 
+> **Catatan:** hubungan supertype–subtype `User` → `Admin`, `Petugas Konter`, `Kurir` pada ERD diwujudkan dengan
+> **komposisi**. Contohnya `Kurir` memuat atribut `nomorKendaraan` dan menyimpan objek `User` (`private User user`).
+ 
+🔎 Pewarisan membuat kode akses database tidak berulang di setiap DAO, dan membuat penambahan role baru cukup dengan satu class `HakAkses*` baru.
+ 
+---
+ 
+### 3. Polymorphism (Polimorfisme)
+ 
+**Konsep:** method dengan nama yang sama dapat berperilaku berbeda sesuai objek yang menjalankannya.
+ 
+#### 📁 a. Method overriding pada DAO
+```java
+// KonterDAO.java
+@Override
+public String namaTabel() { return "konter"; }
+ 
+// OngkirDAO.java
+@Override
+public String namaTabel() { return "ongkir"; }
+ 
+// PengirimanDAO.java
+@Override
+public String namaTabel() { return "pengiriman"; }
+```
+`BaseDAO` memanggil `namaTabel()`, `petakanBaris()`, dan `ambilSemua()`. Hasilnya menyesuaikan DAO yang dipakai.
+Contohnya pada `sisipKunciBaru()`, pesan galat memuat nama tabel milik DAO yang sedang berjalan.
+ 
+#### 📁 b. Polimorfisme pada hak akses (`MainFrame.java`)
+```java
+private HakAkses hakAkses = util.HakAkses.tanpaIzin();
+ 
+@Override
+public void tampilkanHalaman(String namaHalaman) {
+    if (!hakAkses.bolehBuka(namaHalaman)) {
+        String beranda = hakAkses.halamanBeranda();
+        // tampilkan "Akses Ditolak" + hakAkses.namaRole()
+        namaHalaman = beranda;
+    }
+    cardLayout.show(panelUtama, namaHalaman);
+}
+```
+```java
+// Login.java: objek HakAkses dipilih sesuai role di database
+frame.setHakAkses(util.HakAkses.dariRole(user.getRole()));
+```
+`MainFrame` hanya mengenal tipe `HakAkses`. Setelah login, objek yang dipakai bisa `HakAksesAdmin`,
+`HakAksesKonter`, atau `HakAksesKurir`, dan setiap role mendapat halaman beranda serta izin berbeda
+tanpa `if-else` per role di `MainFrame`.
+ 
+#### 📁 c. Method overriding pada model (`Konter.java`)
+```java
+@Override
+public String toString() {
+    return idKonter + " - " + namaKonter;
+}
+ 
+@Override
+public Object[] sebagaiBaris() {
+    return new Object[]{ idKonter, namaKonter, alamatKonter, kecamatan, callCenter };
+}
+```
+`Ongkir` juga mengimplementasikan `sebagaiBaris()`, tetapi dengan isi kolom yang berbeda
+(`idOngkir`, `jarakMin`, `jarakMax`, `tarifDasar`).
+ 
+🔎 Dengan polimorfisme, kode pemanggil cukup memakai tipe induk (`BaseDAO`, `HakAkses`, `BarisTabel`),
+sedangkan perilaku detail menyesuaikan objek aslinya.
+ 
+---
+ 
+### 4. Abstraction (Abstraksi)
+ 
+**Konsep:** menyembunyikan detail implementasi dan hanya menampilkan apa yang perlu dipakai, lewat abstract class dan interface.
+ 
+#### 📁 a. `BaseDAO<T>` (abstract class)
+```java
+public abstract class BaseDAO<T> {
+ 
+    public abstract String namaTabel();
+    protected abstract T petakanBaris(ResultSet rs) throws SQLException;
+    public abstract List<T> ambilSemua() throws SQLException;
+ 
+    protected void jalankanTransaksi(BlokTransaksi blok) throws SQLException {
+        try (Connection conn = bukaKoneksi()) {
+            conn.setAutoCommit(false);
+            try {
+                blok.jalankan(conn);
+                conn.commit();
+            } catch (SQLException | RuntimeException e) {
+                conn.rollback();
+                throw e;
+            }
+        }
+    }
+}
+```
+Detail JDBC seperti koneksi, `commit`, dan `rollback` disembunyikan di `BaseDAO`. DAO turunan hanya perlu
+menyatakan nama tabel dan cara memetakan satu baris hasil query ke objek model.
+ 
+#### 📁 b. `HakAkses` (abstract class)
+```java
+public abstract class HakAkses {
+ 
+    protected abstract Set<String> halamanIzin();
+    public abstract String halamanBeranda();
+    public abstract String namaRole();
+ 
+    public final boolean bolehBuka(String namaHalaman) { ... }
+ 
+    public static HakAkses dariRole(String role) { ... }
+}
+```
+Class ini menyediakan satu cara baku untuk memeriksa izin (`bolehBuka()` bersifat `final`), sedangkan isi izin
+tiap role didefinisikan oleh turunannya. Pemakai cukup memanggil `HakAkses.dariRole(role)` tanpa tahu class konkret mana yang dibuat.
+ 
+#### 📁 c. Interface `BarisTabel` dan `NavigasiHalaman`
+```java
+public interface BarisTabel {
+    Object[] sebagaiBaris();
+}
+```
+```java
+public interface NavigasiHalaman {
+    void tampilkanHalaman(String namaHalaman);
+}
+```
+`BarisTabel` adalah kontrak untuk objek yang bisa ditampilkan sebagai satu baris tabel (diimplementasikan `Konter` dan `Ongkir`).
+`NavigasiHalaman` adalah kontrak untuk objek yang dapat berpindah halaman (diimplementasikan `MainFrame`).
+ 
+🔎 Abstraksi membuat DAO dan hak akses mudah diperluas, karena menambah entitas atau role baru hanya perlu
+mengikuti kerangka yang sudah ada.
+ 
+---
+ 
+### ➕ Nilai Tambah
+ 
+| Penerapan | Lokasi | Keterangan |
+|---|---|---|
+| **Singleton** | `KoneksiDatabase`, `Sesi` | Hanya ada satu instance untuk akses koneksi dan data sesi login. |
+| **Transaksi database** | `BaseDAO.jalankanTransaksi()` | Beberapa query dijalankan dalam satu transaksi dengan `commit` dan `rollback`. Dipakai saat kurir mengubah status pengantaran: update pengantaran, sinkron status pengiriman, dan catat riwayat. |
+| **Hak akses per role** | `util/HakAkses*` | Halaman yang bisa dibuka dibatasi sesuai role. |
+ 
+---
