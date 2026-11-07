@@ -53,17 +53,15 @@ JetExpress adalah Sistem Informasi Manajemen Pengiriman dan Pelacakan Paket berb
 
 ## Tech Stack
 
-* **Bahasa Pemrograman**: Java (JDK 17)
+* **Bahasa Pemrograman**: Java 
 
-
-* **Database**: MySQL (Driver: `mysql-connector-j` 9.3.0)
-
+* **Database**: MySQL
 
 * **Arsitektur**: MVC (Model-View-Controller) & DAO (Data Access Object)
 * **Framework/Library**:
-* Java Swing (GUI)
-* FlatLaf (Tema UI)
-* JXMapViewer2 v2.8 (Implementasi Peta/Koordinat)
+* **GUI Library**: Java Swing
+* **UI Library**: FlatLaf 
+* **Map Library**: JXMapViewer2 v2.8
 
 
 * JUnit 5 v5.10.3 (Unit Testing)
