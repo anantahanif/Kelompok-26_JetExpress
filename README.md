@@ -615,16 +615,6 @@ public interface NavigasiHalaman {
 mengikuti kerangka yang sudah ada.
  
 ---
- 
-### ➕ Nilai Tambah
- 
-| Penerapan | Lokasi | Keterangan |
-|---|---|---|
-| **Singleton** | `KoneksiDatabase`, `Sesi` | Hanya ada satu instance untuk akses koneksi dan data sesi login. |
-| **Transaksi database** | `BaseDAO.jalankanTransaksi()` | Beberapa query dijalankan dalam satu transaksi dengan `commit` dan `rollback`. Dipakai saat kurir mengubah status pengantaran: update pengantaran, sinkron status pengiriman, dan catat riwayat. |
-| **Hak akses per role** | `util/HakAkses*` | Halaman yang bisa dibuka dibatasi sesuai role. |
- 
----
 
 ## 7. Cara Penggunaan Program
 
