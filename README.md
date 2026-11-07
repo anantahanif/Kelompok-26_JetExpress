@@ -758,3 +758,18 @@ serta menambah atau mengubah **Pengantaran**. Menu **Ongkir** dan **Konter** dap
 <img width="1352" height="762" alt="image" src="https://github.com/user-attachments/assets/823f1461-1f12-4ba1-bf56-f420b6a85a21" />
 
 </details>
+
+## 8. Kontributor
+ 
+| No | Nama | NIM |
+|:---:|---|---|
+| 1 | Alya Hauranisa Nugroho | 2509116005 |
+| 2 | Annisa Nayzhua Febriyani | 2509116013 |
+| 3 | Ananta Hanif Fidzya Pratama | 2509116023 |
+| 4 | Muhammad Risky Alpianur | 2509116101 |
+ 
+**Kelompok 26:** Jet. Program Studi Sistem Informasi, Fakultas Teknik, Universitas Mulawarman, 2026.
+ 
+---
+ 
+<p align="center">Dibuat untuk Proyek Akhir PBO dan SBD · Universitas Mulawarman 2026</p>
