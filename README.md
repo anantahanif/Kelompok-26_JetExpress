@@ -140,7 +140,7 @@ dengan nomor resi **tanpa login**.
 
 <br>
 
-![Use Case Diagram](<img width="1548" height="2752" alt="JetExpress-USE CASE DIAGRAM drawio" src="https://github.com/user-attachments/assets/34d21f67-d226-4196-a4ff-d9f53f10630e" />)
+<img width="1548" height="2752" alt="JetExpress-USE CASE DIAGRAM drawio" src="https://github.com/user-attachments/assets/34d21f67-d226-4196-a4ff-d9f53f10630e" />
 
 </details>
 
@@ -149,31 +149,24 @@ dengan nomor resi **tanpa login**.
 
 <br>
 
-**Menu Utama
-![Flowchart](<img width="1652" height="1332" alt="JetExpress-JetExpress MENU UTAMA drawio" src="https://github.com/user-attachments/assets/651d883c-48e8-4f42-a613-55369805f905" />
-)
+**Menu Utama**
+<img width="1652" height="1332" alt="JetExpress-JetExpress MENU UTAMA drawio" src="https://github.com/user-attachments/assets/651d883c-48e8-4f42-a613-55369805f905" />
 
-**Menu Login
-![Flowchart](<img width="992" height="772" alt="JetExpress- JetExpress MENU LOGIN drawio" src="https://github.com/user-attachments/assets/1a51f2a9-2104-42ed-8332-d65a8c0a5886" />
-)
+**Menu Login**
+<img width="992" height="772" alt="JetExpress- JetExpress MENU LOGIN drawio" src="https://github.com/user-attachments/assets/1a51f2a9-2104-42ed-8332-d65a8c0a5886" />
 
-**Menu Kurir
-![Flowchart](<img width="1142" height="1852" alt="JetExpress-JetExpress MENU KURIR drawio" src="https://github.com/user-attachments/assets/6f3ea31e-59f0-464b-83ac-503d6566407b" />
-)
+**Menu Kurir**
+<img width="1142" height="1852" alt="JetExpress-JetExpress MENU KURIR drawio" src="https://github.com/user-attachments/assets/6f3ea31e-59f0-464b-83ac-503d6566407b" />
 
-**Menu Admin
-![Flowchart](<img width="1762" height="862" alt="JetExpress-JetExpress MENU ADMIN drawio (1)" src="https://github.com/user-attachments/assets/75be6c70-c23a-4133-bed6-9852d163e57c" />
-)
+**Menu Admin**
+<img width="1762" height="862" alt="JetExpress-JetExpress MENU ADMIN drawio (1)" src="https://github.com/user-attachments/assets/75be6c70-c23a-4133-bed6-9852d163e57c" />
 
-**Menu Petugas Konter
-![Flowchart](<img width="1472" height="842" alt="JetExpress-JetExpress MENU PETUGAS KONTER drawio" src="https://github.com/user-attachments/assets/6a73c34c-4ebe-424b-8339-083f7ba63c93" />
-)
+**Menu Petugas Konter**
+<img width="1472" height="842" alt="JetExpress-JetExpress MENU PETUGAS KONTER drawio" src="https://github.com/user-attachments/assets/6a73c34c-4ebe-424b-8339-083f7ba63c93" />
 
 
-
-** Link Flowchart: <https://app.diagrams.net/#G1ZnnL7I5e6o7-vNZJKJbzveKaD8YHyKVH>
+**Link Flowchart**: <https://app.diagrams.net/#G1ZnnL7I5e6o7-vNZJKJbzveKaD8YHyKVH>
 </details>
-
 
 
 <details>
@@ -181,8 +174,7 @@ dengan nomor resi **tanpa login**.
 
 <br>
 
-![ERD Logical](<img width="6203" height="4044" alt="ERD Logical_PA_Jet" src="https://github.com/user-attachments/assets/16be3d07-0545-4ff0-8025-02e04560eb79" />
-)
+<img width="6203" height="4044" alt="ERD Logical_PA_Jet" src="https://github.com/user-attachments/assets/16be3d07-0545-4ff0-8025-02e04560eb79" />
 
 </details>
   
@@ -191,8 +183,7 @@ dengan nomor resi **tanpa login**.
 
 <br>
 
-![ERD Relational](<img width="12295" height="5924" alt="ERD Relational_PA_Jet" src="https://github.com/user-attachments/assets/b3349a2d-7e9a-473e-858f-e3036d30f7bc" />
-)
+<img width="12295" height="5924" alt="ERD Relational_PA_Jet" src="https://github.com/user-attachments/assets/b3349a2d-7e9a-473e-858f-e3036d30f7bc" />
 
 </details>
 
