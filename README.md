@@ -324,8 +324,6 @@ JetExpress/
     │       └── UbahStatusPengantaran.java
     └── resources/                     # ikon dan maskot (IconCekTarif, JetyBahagia, dst.)
 ```
-
-> File `.form` pada package `view` adalah file desain NetBeans GUI Builder untuk tiap halaman, dan tidak ditampilkan di atas.
  
 **Peran tiap package (MVC + DAO)**
  
@@ -638,4 +636,111 @@ mengikuti kerangka yang sudah ada.
 | **Transaksi database** | `BaseDAO.jalankanTransaksi()` | Beberapa query dijalankan dalam satu transaksi dengan `commit` dan `rollback`. Dipakai saat kurir mengubah status pengantaran: update pengantaran, sinkron status pengiriman, dan catat riwayat. |
 | **Hak akses per role** | `util/HakAkses*` | Halaman yang bisa dibuka dibatasi sesuai role. |
  
+---
+
+## 7. Cara Penggunaan Program
+
+Berikut merupakan penjelasan mengenai cara penggunaan program “JeteXpress – Sistem Pengiriman dan Pelacakan Paket di Kota Samarinda”,
+yang menampilkan berbagai tampilan antarmuka (Graphical User Interface) dari aplikasi ini. Setiap tampilan menggambarkan
+fungsi dan peran masing-masing halaman yang telah dirancang untuk mendukung proses pengiriman, pelacakan,
+dan pengantaran paket secara digital.
+ 
+Program ini terdiri dari beberapa Frame dan Panel utama yang terbagi menjadi empat bagian, yaitu:
+ 
+1. Halaman untuk Pengguna Umum (Pelanggan) – berfungsi untuk melacak paket dengan nomor resi, mengecek estimasi tarif ongkir, serta melihat daftar konter JeteXpress tanpa perlu login.
+2. Halaman untuk Admin (Pihak Pengelola) – berfungsi untuk memantau dashboard, mengelola data user, konter, ongkir, pengiriman, pengantaran, dan riwayat pelacakan.
+3. Halaman untuk Petugas Konter – berfungsi untuk mencatat paket dan pengiriman yang diterima di konter, memperbarui riwayat pelacakan, serta membuat penugasan pengantaran.
+4. Halaman untuk Kurir – berfungsi untuk melihat tugas pengantaran, melihat titik tujuan di peta, dan memperbarui status pengantaran beserta foto bukti.
+
+Melalui tampilan-tampilan berikut, dapat terlihat bagaimana sistem ini bekerja secara menyeluruh, mulai dari tahap login hingga proses pengantaran paket sampai ke penerima.
+
+Setiap bagian dilengkapi dengan deskripsi dan fungsi masing-masing GUI, agar pengguna maupun pengembang dapat memahami alur penggunaan program dengan lebih mudah dan terstruktur.
+  
+<details>
+<summary>🏠 Menu Utama (Beranda)</summary>
+
+<img width="1354" height="762" alt="image" src="https://github.com/user-attachments/assets/9a4d0eb6-7068-4aa8-bb81-34caba246fd4" />
+
+Halaman pertama saat aplikasi dibuka. Dari sini pengguna umum dapat membuka tiga layanan: **Lacak Paket**, **Cek Tarif**,
+dan **Konter Kami**. Tombol **Login** di pojok kanan atas digunakan oleh pegawai.
+ 
+</details>
+<details>
+<summary>📍 Lacak Paket</summary>
+
+ <img width="1354" height="762" alt="image" src="https://github.com/user-attachments/assets/b315c82a-ec9e-4065-b2de-e6e275a2a522" />
+
+1. Masukkan **nomor resi** pada kolom yang tersedia.
+2. Tekan **Cek Data Pengiriman**.
+3. Sistem menampilkan **Informasi Paket** (pengirim, penerima, berat, estimasi kirim, status) beserta tabel **Riwayat Pelacakan**.
+</details>
+<details>
+<summary>💰 Cek Tarif</summary>
+
+ <img width="1354" height="763" alt="image" src="https://github.com/user-attachments/assets/1017a28b-cb83-406d-80c2-243e27eb1985" />
+
+1. Pilih **Jarak** pengiriman.
+2. Isi **Berat Paket** (lebih dari 0 kg dan maksimal 50 kg).
+3. Tekan **Hitung Ongkir** untuk melihat **Total Ongkir**.
+Data tarif diambil dari tabel `ongkir` di database.
+ 
+</details>
+<details>
+<summary>🏬 Konter Kami</summary>
+<img src="docs/screenshots/konter-kami.png" alt="Konter Kami" width="800">
+Menampilkan **Daftar Konter** JetExpress yang tersebar di Kota Samarinda, lengkap dengan alamat, kecamatan, dan nomor call center.
+ 
+</details>
+<details>
+<summary>🔐 Login</summary>
+<img src="docs/screenshots/login.png" alt="Login" width="800">
+Masukkan **email** dan **password** (ada pilihan *Show Password*). Sistem membaca role akun dari database, menyimpannya di `Sesi`,
+lalu mengarahkan pegawai ke beranda sesuai role:
+ 
+| Role | Halaman setelah login |
+|---|---|
+| Admin | Dashboard Admin |
+| Petugas Konter | Kelola Pengiriman |
+| Kurir | Tugas Pengantaran |
+ 
+Pengguna umum cukup menekan **Kembali** untuk memakai layanan publik tanpa login.
+ 
+</details>
+<details>
+<summary>🛠️ Dashboard dan Kelola Data Admin</summary>
+<img src="docs/screenshots/dashboard-admin.png" alt="Dashboard Admin" width="800">
+**Dashboard Admin** menampilkan statistik pengiriman: jumlah yang sedang dikirim, berhasil sampai, gagal, dan perlu ditindaklanjuti, serta pengiriman per konter.
+Menu samping memberi akses ke **User**, **Konter**, **Ongkir**, **Pengiriman**, **Pengantaran**, dan **Riwayat Pelacakan**.
+ 
+Setiap menu kelola memiliki fitur CRUD:
+ 
+- **Cari**: temukan data, misalnya berdasarkan nomor resi.
+- **+ Tambah**: buka form tambah data.
+- **Ubah**: ubah data yang dipilih pada tabel.
+- **Hapus**: hapus data. Data yang masih dipakai data lain tidak dapat dihapus dan sistem menampilkan peringatan.
+- **Refresh**: muat ulang data dari database.
+<img src="docs/screenshots/kelola-pengiriman.png" alt="Kelola Pengiriman" width="800">
+<img src="docs/screenshots/tambah-pengiriman.png" alt="Tambah Pengiriman" width="800">
+<img src="docs/screenshots/kelola-pengantaran.png" alt="Kelola Pengantaran" width="800">
+Pada **Pengantaran**, admin menugaskan kurir, memilih titik tujuan di peta (**Lihat Peta**), dan dapat membuka foto bukti (**Lihat Gambar**).
+ 
+</details>
+<details>
+<summary>🧾 Panel Petugas Konter</summary>
+<img src="docs/screenshots/menu-petugas-konter.png" alt="Panel Petugas Konter" width="800">
+Petugas konter mengelola **Pengiriman** (cari berdasarkan resi, tambah, ubah) dan **Riwayat Pelacakan**,
+serta menambah atau mengubah **Pengantaran**. Menu **Ongkir** dan **Konter** dapat dilihat sebagai referensi.
+ 
+</details>
+<details>
+<summary>🛵 Panel Kurir</summary>
+<img src="docs/screenshots/lihat-pengantaran.png" alt="Tugas Pengantaran" width="800">
+<img src="docs/screenshots/ubah-status-pengantaran.png" alt="Ubah Status Pengantaran" width="800">
+1. Kurir melihat daftar **Tugas Pengantaran**.
+2. **Lihat Peta** menampilkan titik tujuan pengantaran.
+3. **Ubah Status** membuka form untuk memilih status (`Ditugaskan`, `Dalam Perjalanan`, `Berhasil`, `Gagal`),
+   menulis **Catatan Kurir**, dan memilih **Bukti Foto**. Foto wajib diisi bila status `Gagal`.
+4. Setelah disimpan, status pengiriman ikut diperbarui dan sebuah baris riwayat pelacakan dibuat otomatis
+   (misalnya "Status pengantaran: Berhasil"), sehingga pelanggan melihatnya di **Lacak Paket**.
+</details>
 ---
