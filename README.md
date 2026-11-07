@@ -111,22 +111,23 @@ JeteXpress_123
 ## Penjelasan Penerapan 4 Pilar OOP
 
 1. **Encapsulation (Enkapsulasi)**:
-Seluruh atribut pada class `Model` (seperti `id_user`, `nama`, `no_resi`, `total_biaya`) dideklarasikan dengan *access modifier* `private`. Akses dan modifikasi data dijembatani secara aman dari luar *class* menggunakan metode *getter* dan *setter*.
-2. **Inheritance (Pewarisan)**:
-Menerapkan hierarki *Supertype-Subtype* pada rancangan basis data ke dalam kelas Java. Terdapat parent class `User` yang menampung atribut umum, lalu diwariskan (`extends`) ke child class seperti `Admin`, `PetugasKonter`, dan `Kurir` yang memiliki atribut lebih spesifik (contoh: `shift_kerja` pada class Petugas Konter, `nomor_kendaraan` pada class Kurir).
+Seluruh atribut pada class `Model` (seperti `id_user`, `nama`, `no_resi`, `total_biaya`) dideklarasikan dengan *access modifier* `private`. Akses dan modifikasi data dijembatani secara aman dari luar *class* menggunakan metode *getter* dan *setter*, dengan ini data akan lebih aman, dan jika aturan berubah cukup mengubah satu tempat(geter/setter) tanpa merusak bagian lain.
 
+3. **Inheritance (Pewarisan)**:
+Menerapkan hierarki *Supertype-Subtype* pada rancangan basis data ke dalam kelas Java. Terdapat parent class `User` yang menampung atribut umum, lalu diwariskan (`extends`) ke child class seperti `Admin`, `PetugasKonter`, dan `Kurir` yang memiliki atribut lebih spesifik (contoh: `shift_kerja` pada class Petugas Konter, `nomor_kendaraan` pada class Kurir), tidak perlu menulis ulang nama, email, dan password di tiga class cukup ditulis sekali di user.
 
-3. **Polymorphism (Polimorfisme)**:
-Diterapkan melalui penggunaan antarmuka (interface) pada lapisan DAO dan *Method Overriding*. Sebuah antarmuka seperti `UserDAO` mendefinisikan kontrak operasi (contoh: `insert()`, `update()`), yang kemudian diimplementasikan dan di- *override* secara spesifik oleh `UserDAOImpl`, menyesuaikan query SQL yang dibutuhkan.
-4. **Abstraction (Abstraksi)**:
-Proses akses dan komunikasi ke basis data MySQL disembunyikan menggunakan *Interface* (lapisan DAO). Lapisan Controller (maupun View) hanya memanggil metode dari interface DAO dan tidak perlu mengetahui detail kompleksitas query, koneksi `ResultSet`, atau penanganan `SQLException` yang terjadi di balik layar.
+4. **Polymorphism (Polimorfisme)**:
+Yaitu 'banyak bentuk' satu perintah yang sama bisa dijalankan dengan cara berbeda tergantung siapa pelaksananya. Oleh karna itu diterapkan melalui penggunaan antarmuka (interface) pada lapisan DAO dan *Method Overriding*. Sebuah antarmuka seperti `UserDAO` mendefinisikan kontrak operasi (contoh: `insert()`, `update()`), yang kemudian diimplementasikan dan di- *override* secara spesifik oleh `UserDAOImpl`, menyesuaikan query SQL yang dibutuhkan. Semua DAO punya bentuk yang seragam jika suatu saat database diganti cukup memuat implementasi baru tanpa menggubah controller.
+
+6. **Abstraction (Abstraksi)**:
+Artinya menyembunyikan hal rumit dan hanya menampilkan yang perlu, Proses akses dan komunikasi ke basis data MySQL disembunyikan menggunakan *Interface* (lapisan DAO). Lapisan Controller (maupun View) hanya memanggil metode dari interface DAO dan tidak perlu mengetahui detail kompleksitas query, koneksi `ResultSet`, atau penanganan `SQLException` yang terjadi di balik layar.
 
 ## Cara Penggunaan Program
 
 1. **Persiapan Database**:
 * Buka XAMPP/Laragon dan jalankan layanan MySQL.
 * Buat database baru dengan nama `jetexpress`.
-* Lakukan proses *import* menggunakan file `db_jetexpress_4.sql` yang telah disediakan.
+* Lakukan proses *import* lalu pilih file `db_jetexpress_4.sql` yang telah disediakan.
 
 
 2. **Menjalankan Program**:
