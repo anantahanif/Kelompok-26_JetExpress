@@ -1,7 +1,16 @@
+# JetExpress 
 <img width="1920" height="1080" alt="Slide Deck Kelompok 26 Jet" src="https://github.com/user-attachments/assets/078e9425-f3e0-4ca7-8d01-cb51bfcc25d7" />
 
-# JetExpress 
 ## 📦 Sistem Informasi Manajemen Pengiriman & Pelacakan Paket Dengan Aplikasi JetExpress
+
+![Java](https://img.shields.io/badge/Java-17-orange?logo=openjdk&logoColor=white)
+![Swing](https://img.shields.io/badge/GUI-Java%20Swing-blue)
+![MySQL](https://img.shields.io/badge/Database-MySQL%208-4479A1?logo=mysql&logoColor=white)
+![Maven](https://img.shields.io/badge/Build-Maven-C71A36?logo=apachemaven&logoColor=white)
+![Arsitektur](https://img.shields.io/badge/Arsitektur-MVC%20%2B%20DAO-green)
+
+Proyek Akhir Mata Kuliah **Pemrograman Berorientasi Objek (PBO)** dan **Sistem Basis Data (SBD)**
+Program Studi Sistem Informasi, Fakultas Teknik, Universitas Mulawarman.
 
 ## SDGs : 8. Decent Work and Economic Growth & 9. Industry, Innovation and Infrastructure
 
@@ -9,22 +18,72 @@
 
 ---
 
+## Daftar Isi
+ 
+1. [Deskripsi Singkat](#1-deskripsi-singkat)
+2. [Fitur Utama Program](#2-fitur-utama-program)
+3. [Tech Stack](#3-tech-stack)
+4. [Perancangan Sistem](#4-perancangan-sistem)
+5. [Struktur Folder / Package](#5-struktur-folder--package)
+6. [Penerapan 4 Pilar OOP](#6-penerapan-4-pilar-oop)
+7. [Cara Penggunaan Program](#7-cara-penggunaan-program)
+8. [Kontributor](#8-kontributor)
+---
 
-### Kontributor
-* Alya Hauranisa Nugroho (25019116005)
-* Annisa Nayzhua Febriyani (25019116013)
-* Ananta Hanif Fidzya Pratama (25019116023)
-* Muhammad Risky Alpianur (25019116101)
+## 1. Deskripsi Singkat
+ 
+**JetExpress** adalah aplikasi desktop berbasis **Java Swing** untuk mengelola operasional perusahaan
+ekspedisi **Jet** di Kota Samarinda, mulai dari penerimaan paket di konter, pencatatan pengiriman,
+penugasan kurir, sampai pelacakan status paket oleh pelanggan.
+ 
+**Latar belakang.** Banyak usaha ekspedisi masih mencatat pengiriman secara manual (misalnya dengan
+spreadsheet). Akibatnya pencarian data lambat, pencatatan rawan salah, dan status pengiriman sulit dipantau.
+Di sisi lain, pelanggan juga kesulitan mengetahui tarif dan posisi paketnya.
+ 
+**Solusi.** JetExpress menyimpan seluruh data (user, konter, paket, pengiriman, ongkir, pengantaran, dan
+riwayat pelacakan) di database MySQL yang saling berelasi, dengan pembagian hak akses untuk **Admin**,
+**Petugas Konter**, **Kurir**, dan **Pengguna Umum**. Pengguna umum dapat mengecek tarif dan melacak paket
+dengan nomor resi **tanpa login**.
+ 
+**Relevansi SDGs.**
+ 
+| SDG | Keterkaitan |
+|---|---|
+| **SDG 8** — Decent Work and Economic Growth | Meningkatkan efisiensi dan produktivitas kerja petugas lewat pencatatan terstruktur dan pembagian tugas yang jelas. |
+| **SDG 9** — Industry, Innovation, and Infrastructure | Mendukung digitalisasi proses bisnis ekspedisi melalui sistem informasi terintegrasi. |
+ 
+---
 
-## Deskripsi Singkat
+## 2. Fitur Utama Program
 
-JetExpress adalah Sistem Informasi Manajemen Pengiriman dan Pelacakan Paket berbasis desktop. Aplikasi ini dirancang untuk memfasilitasi proses bisnis ekspedisi, mulai dari pencatatan paket, pengelolaan tarif ongkos kirim, penugasan kurir, hingga pelacakan riwayat rute secara *real-time*. Dikembangkan menggunakan Java Swing dengan pola arsitektur MVC (Model-View-Controller) dan metode DAO (Data Access Object) Pattern untuk memastikan struktur kode yang *scalable* dan terorganisasi dengan baik, serta mengimplementasikan desain tata letak UI menggunakan FlatLaf.
+### 🌐 Pengguna Umum (tanpa login)
+- **Lacak Paket** — telusuri status dan riwayat pengiriman memakai nomor resi.
+- **Cek Tarif** — hitung estimasi ongkos kirim berdasarkan jarak dan berat paket.
+- **Konter Kami** — lihat daftar konter Jet beserta alamat dan kontaknya.
+### 🛠️ Admin
+- **Dashboard** laporan sederhana.
+- **CRUD** untuk seluruh data: User, Konter, Pengiriman, Paket, Ongkir, Riwayat Pelacakan, dan Pengantaran.
+- Penugasan kurir pada pengantaran, dengan pemilihan titik tujuan di **peta** (latitude dan longitude).
+- Peringatan yang ramah saat data tidak bisa dihapus karena masih dipakai data lain.
+### 🧾 Petugas Konter
+- Kelola data **Pengiriman**, **Paket**, dan **Riwayat Pelacakan**.
+- Melihat informasi **Ongkir**, **Pengantaran**, dan **Konter**.
+### 🛵 Kurir
+- Melihat tugas pengantaran yang diberikan.
+- Memperbarui status pengantaran: `Ditugaskan` → `Dalam Perjalanan` → `Berhasil` / `Gagal`.
+- Melampirkan **foto bukti** pengantaran dan catatan kurir.
+### ⚙️ Fitur Teknis
+- Seluruh data dari database MySQL (tidak ada data yang di-hardcode).
+- Validasi input (nomor HP, koordinat, tanggal) dan pembatasan menu berdasarkan peran.
+- Peta OpenStreetMap untuk memilih koordinat tujuan pengantaran.
+---
 
-## Fitur Utama Program
-
+<details>
+<summary>Fitur Utama Program</summary>
+  
 1. **Multi-Role Authentication**: Akses login berbeda untuk Admin, Petugas Konter, dan Kurir.
 
-<img width="1354" height="761" alt="image" src="https://github.com/user-attachments/assets/1b70a70f-2caf-4a98-b600-153d94e2a84f" />
+<img width="1356" height="764" alt="image" src="https://github.com/user-attachments/assets/fa050a97-b9b4-4ef8-a586-bdc87d98c28b" />
 
 2. **Dashboard & Laporan Operasional**: Rekapitulasi jumlah pengiriman dan pengelolaan data sistem (khusus Admin).
 
@@ -50,28 +109,26 @@ JetExpress adalah Sistem Informasi Manajemen Pengiriman dan Pelacakan Paket berb
 
 <img width="700" height="557" alt="image" src="https://github.com/user-attachments/assets/68dab32c-4a9f-4251-b004-39dfd54c2a62" />
 
+</details>
 
-## Tech Stack
+---
 
-* **Bahasa Pemrograman**: Java 
-
-* **Database**: MySQL
-
-* **Arsitektur**: MVC (Model-View-Controller) & DAO (Data Access Object)
-* **Framework/Library**:
-* **GUI Library**: Java Swing
-* **UI Library**: FlatLaf 
-* **Map Library**: JXMapViewer2 v2.8
-
-
-* JUnit 5 v5.10.3 (Unit Testing)
-
-
-
-
-* **Build Tool & IDE**: Maven, Apache NetBeans
-
-
+## 3. Tech Stack
+ 
+| Kategori | Teknologi |
+|---|---|
+| Bahasa | Java 17 |
+| GUI | Java Swing (desktop) |
+| Database | MySQL 8.0 |
+| Build tool | Apache Maven |
+| Driver database | MySQL Connector/J 9.3.0 (JDBC) |
+| Library peta | JXMapViewer2 2.8 (OpenStreetMap) |
+| Testing | JUnit Jupiter 5.10.3 |
+| Arsitektur | MVC + DAO Pattern |
+| IDE | Apache NetBeans |
+| Tools perancangan | Oracle SQL Developer Data Modeler (ERD), draw.io (Use Case dan Flowchart), Figma (desain antarmuka), phpMyAdmin |
+ 
+---
 
 ## Perancangan Sistem
 
