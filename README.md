@@ -729,20 +729,32 @@ Pada **Pengantaran**, admin menugaskan kurir, memilih titik tujuan di peta (**Li
 </details>
 <details>
 <summary>🧾 Panel Petugas Konter</summary>
-<img src="docs/screenshots/menu-petugas-konter.png" alt="Panel Petugas Konter" width="800">
+
+<img width="1353" height="760" alt="image" src="https://github.com/user-attachments/assets/dd922484-0f06-4dbd-bab5-aff19f6e979f" />
+
 Petugas konter mengelola **Pengiriman** (cari berdasarkan resi, tambah, ubah) dan **Riwayat Pelacakan**,
 serta menambah atau mengubah **Pengantaran**. Menu **Ongkir** dan **Konter** dapat dilihat sebagai referensi.
  
 </details>
 <details>
 <summary>🛵 Panel Kurir</summary>
-<img src="docs/screenshots/lihat-pengantaran.png" alt="Tugas Pengantaran" width="800">
-<img src="docs/screenshots/ubah-status-pengantaran.png" alt="Ubah Status Pengantaran" width="800">
+
 1. Kurir melihat daftar **Tugas Pengantaran**.
+
+<img width="1355" height="759" alt="image" src="https://github.com/user-attachments/assets/46e5e2fb-1b05-4282-9227-ed5a7394ee57" />
+
 2. **Lihat Peta** menampilkan titik tujuan pengantaran.
+
+<img width="1353" height="763" alt="image" src="https://github.com/user-attachments/assets/fe36f6ba-1b55-4aae-9581-4c200e0f2ed9" />
+
 3. **Ubah Status** membuka form untuk memilih status (`Ditugaskan`, `Dalam Perjalanan`, `Berhasil`, `Gagal`),
    menulis **Catatan Kurir**, dan memilih **Bukti Foto**. Foto wajib diisi bila status `Gagal`.
+    
+<img width="1357" height="758" alt="image" src="https://github.com/user-attachments/assets/8f98f829-f9f4-4dac-be6c-94316afdfe36" />
+
 4. Setelah disimpan, status pengiriman ikut diperbarui dan sebuah baris riwayat pelacakan dibuat otomatis
    (misalnya "Status pengantaran: Berhasil"), sehingga pelanggan melihatnya di **Lacak Paket**.
+
+<img width="1352" height="762" alt="image" src="https://github.com/user-attachments/assets/823f1461-1f12-4ba1-bf56-f420b6a85a21" />
+
 </details>
----
