@@ -706,9 +706,24 @@ Setiap menu kelola memiliki fitur CRUD:
 
 <img width="1355" height="763" alt="image" src="https://github.com/user-attachments/assets/f859536e-402c-418a-aefe-57e7baf746d2" />
 
-<img width="1352" height="760" alt="image" src="https://github.com/user-attachments/assets/10a09511-dd55-43f4-988c-44d1041535a1" />
+Halaman ini menampilkan seluruh data pengiriman dalam tabel (No, No. Resi, Barang, Berat, Pengirim, Penerima, Jenis, Konter, dan seterusnya).
+- Ketik **nomor resi** pada kolom pencarian lalu tekan **Cari** untuk menemukan satu pengiriman.
+- Tekan **Refresh** untuk menampilkan ulang seluruh data.
+- Pilih satu baris lalu tekan **Ubah** atau **Hapus**.
+- Tekan **+ Tambah Pengiriman** untuk membuka form tambah data.
 
-<img src="docs/screenshots/kelola-pengantaran.png" alt="Kelola Pengantaran" width="800">
+<img width="1352" height="760" alt="image" src="https://github.com/user-attachments/assets/10a09511-dd55-43f4-988c-44d1041535a1" />
+ 
+**Langkah-langkah**
+1. Buka menu **Pengiriman** pada sidebar, lalu tekan **+ Tambah Pengiriman**.
+2. Isi **Data Paket**, lalu **Pengirim dan Penerima**.
+3. Pada **Data Pengiriman**, pilih jenis pengiriman, konter, jarak tarif, metode pembayaran, tanggal estimasi, dan status. Perhatikan **Total Bayar** di bagian bawah kotak.
+4. Tekan **Simpan**. Jika ada kolom wajib yang kosong atau tidak valid (misalnya berat lebih dari 50 kg atau nomor HP salah), muncul pesan peringatan dan data belum tersimpan.
+5. Jika berhasil, muncul pesan **"Data pengiriman berhasil disimpan!"** beserta nomor resi, lalu form dikosongkan untuk input berikutnya. Tekan **Batal** untuk keluar tanpa menyimpan.
+Satu kali **Simpan** menyimpan data paket dan data pengiriman dalam satu transaksi, lalu otomatis mencatat riwayat pelacakan pertama ("Paket diterima di konter"). Pelanggan dapat langsung melacak resi tersebut lewat menu **Lacak Paket**.
+
+<img width="1354" height="760" alt="image" src="https://github.com/user-attachments/assets/5b6d349a-38fb-4225-ac7a-aa0786198822" />
+
 Pada **Pengantaran**, admin menugaskan kurir, memilih titik tujuan di peta (**Lihat Peta**), dan dapat membuka foto bukti (**Lihat Gambar**).
  
 </details>
