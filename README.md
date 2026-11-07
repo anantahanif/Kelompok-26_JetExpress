@@ -24,31 +24,31 @@ JetExpress adalah Sistem Informasi Manajemen Pengiriman dan Pelacakan Paket berb
 
 1. **Multi-Role Authentication**: Akses login berbeda untuk Admin, Petugas Konter, dan Kurir.
 
-<img width="1355" height="758" alt="image" src="https://github.com/user-attachments/assets/218eaf1d-9665-4b15-9dcc-94ff755e3621" />
+<img width="1354" height="761" alt="image" src="https://github.com/user-attachments/assets/1b70a70f-2caf-4a98-b600-153d94e2a84f" />
 
 2. **Dashboard & Laporan Operasional**: Rekapitulasi jumlah pengiriman dan pengelolaan data sistem (khusus Admin).
 
-<img width="1351" height="759" alt="image" src="https://github.com/user-attachments/assets/17f8507d-8a56-4d6c-93cc-d07279d03253" />
+<img width="1359" height="762" alt="image" src="https://github.com/user-attachments/assets/0291e38f-f6c4-4c21-838b-33ce817b2545" />
 
 3. **Manajemen Master Data (CRUD)**: Pengelolaan penuh data Konter, User, Tarif Ongkir, dan Kendaraan Kurir.
 
-<img width="1355" height="758" alt="image" src="https://github.com/user-attachments/assets/3ff8c8a4-8168-4c4d-949e-829c9123e810" />
+<img width="1355" height="759" alt="image" src="https://github.com/user-attachments/assets/4602aaa0-a8c7-460c-8cba-5cfd406b5083" />
 
 4. **Transaksi Pengiriman & Paket**: Pembuatan resi pengiriman, pencatatan data pengirim/penerima, kalkulasi biaya, dan manajemen metode pembayaran (Cash, Cashless, COD).
 
-<img width="1358" height="759" alt="image" src="https://github.com/user-attachments/assets/8e2bdb47-afa3-4d53-97ba-a80112e07182" />
+<img width="1349" height="761" alt="image" src="https://github.com/user-attachments/assets/239d23ba-3a0d-436e-8e2a-4fe032b5214b" />
 
 5. **Pelacakan (Tracking)**: Pembaruan dan monitoring *Riwayat Pelacakan* berdasarkan nomor resi yang dapat diakses publik.
 
-<img width="1356" height="763" alt="image" src="https://github.com/user-attachments/assets/2f70e1db-dac5-4768-bc19-ead963598514" />
+<img width="1354" height="762" alt="image" src="https://github.com/user-attachments/assets/4966aaf7-9d8e-492b-b837-92db9c68f224" />
 
 6. **Manajemen Pengantaran**: Pembaruan status penugasan oleh kurir di lapangan beserta unggah bukti foto pengiriman.
 
-<img width="1354" height="761" alt="image" src="https://github.com/user-attachments/assets/99f142cb-cbe6-4123-968d-3302f1441c89" />
+<img width="1357" height="759" alt="image" src="https://github.com/user-attachments/assets/1c5d0434-7dff-4ef5-99b7-777760ff4fcc" />
 
 7. **Peta Interaktif**: Integrasi rute dan visualisasi titik koordinat latitude/longitude menggunakan library JXMapViewer2.
 
-<img width="694" height="553" alt="image" src="https://github.com/user-attachments/assets/b134adf4-0d71-4af4-a7f3-2437161ae417" />
+<img width="700" height="557" alt="image" src="https://github.com/user-attachments/assets/68dab32c-4a9f-4251-b004-39dfd54c2a62" />
 
 
 ## Tech Stack
