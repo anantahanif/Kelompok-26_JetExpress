@@ -687,13 +687,17 @@ Data tarif diambil dari tabel `ongkir` di database.
 </details>
 <details>
 <summary>🏬 Konter Kami</summary>
-<img src="docs/screenshots/konter-kami.png" alt="Konter Kami" width="800">
+
+<img width="1355" height="763" alt="image" src="https://github.com/user-attachments/assets/6e3071bd-1daf-41fd-a9f4-7a0d0eb46a66" />
+
 Menampilkan **Daftar Konter** JetExpress yang tersebar di Kota Samarinda, lengkap dengan alamat, kecamatan, dan nomor call center.
  
 </details>
 <details>
 <summary>🔐 Login</summary>
-<img src="docs/screenshots/login.png" alt="Login" width="800">
+
+<img width="1358" height="764" alt="image" src="https://github.com/user-attachments/assets/b93f5b67-9753-4b05-9e1f-4db3b7fb8362" />
+
 Masukkan **email** dan **password** (ada pilihan *Show Password*). Sistem membaca role akun dari database, menyimpannya di `Sesi`,
 lalu mengarahkan pegawai ke beranda sesuai role:
  
@@ -708,7 +712,9 @@ Pengguna umum cukup menekan **Kembali** untuk memakai layanan publik tanpa login
 </details>
 <details>
 <summary>🛠️ Dashboard dan Kelola Data Admin</summary>
-<img src="docs/screenshots/dashboard-admin.png" alt="Dashboard Admin" width="800">
+
+<img width="1356" height="761" alt="image" src="https://github.com/user-attachments/assets/87788011-b9bf-4290-a47c-fa2c4c1225eb" />
+
 **Dashboard Admin** menampilkan statistik pengiriman: jumlah yang sedang dikirim, berhasil sampai, gagal, dan perlu ditindaklanjuti, serta pengiriman per konter.
 Menu samping memberi akses ke **User**, **Konter**, **Ongkir**, **Pengiriman**, **Pengantaran**, dan **Riwayat Pelacakan**.
  
@@ -719,8 +725,11 @@ Setiap menu kelola memiliki fitur CRUD:
 - **Ubah**: ubah data yang dipilih pada tabel.
 - **Hapus**: hapus data. Data yang masih dipakai data lain tidak dapat dihapus dan sistem menampilkan peringatan.
 - **Refresh**: muat ulang data dari database.
-<img src="docs/screenshots/kelola-pengiriman.png" alt="Kelola Pengiriman" width="800">
-<img src="docs/screenshots/tambah-pengiriman.png" alt="Tambah Pengiriman" width="800">
+
+<img width="1355" height="763" alt="image" src="https://github.com/user-attachments/assets/f859536e-402c-418a-aefe-57e7baf746d2" />
+
+<img width="1352" height="760" alt="image" src="https://github.com/user-attachments/assets/10a09511-dd55-43f4-988c-44d1041535a1" />
+
 <img src="docs/screenshots/kelola-pengantaran.png" alt="Kelola Pengantaran" width="800">
 Pada **Pengantaran**, admin menugaskan kurir, memilih titik tujuan di peta (**Lihat Peta**), dan dapat membuka foto bukti (**Lihat Gambar**).
  
